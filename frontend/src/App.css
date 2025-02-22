@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background-color: #6461A0;
+  }
+  .container{
+    padding: 10px;
+    font-size: 3rem;
+    margin: 0 auto;
+    width: 80vw;
+    height: 100vh;
+  }
+  .todo-list{
+    font-size: 2rem;
+    list-style: none;
+  }
+  h1{
+    text-align: center;
+    margin: 10px;
+  }
+  input{
+    font-size: 3rem;
+  }
+  .item-text{
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+  }
+  input[type="text"]{
+    display: block;
+    margin: 0 auto;
+  }
+  input:focus{
+    background-color: aquamarine;
+  }
+  button{
+    font-size: 2rem;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+  }
+  .submit-btn{
+    width: 50%;
+    margin: 0 auto;
+    background-color: #0A81D1;
+  }
+  input[type='checkbox']{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  .list-item{
+    font-size: 50px;
+  }
+  
+  .list-element{
+    display: flex;
+    border-bottom: 1px solid black;
+    border-width: 100%;
+    padding: 5px;
+    margin: 5px;
+  }
+  .del-btn{
+    background-color: red;
+    margin-left: 10px;
+  }
