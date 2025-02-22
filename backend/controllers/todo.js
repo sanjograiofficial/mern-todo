@@ -7,17 +7,21 @@ const getTodos = async (req, res) => {
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
-}
+};
 
-const createTodos = async(req, res) => {
-    const todo = req.body;
-    const newTodo = new todo(todo);
-    try {
-        await newTodo.save();
-        res.status(201).json(newTodo);
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
-    }
+const createTodos = async (req, res) => {
+  const body = req.body;
+  if (!body.todo) {
+    res.status(400).json({ message: "Todo is required" });
+  }
+  await todo.create({
+    title: body.todo,
+    completed: false,
+  });
 
-module.exports = { getTodos };
+  return res.render("home", {
+    todos: title,
+  });
+};
+
+module.exports = { getTodos, createTodos };
