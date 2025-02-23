@@ -1,5 +1,6 @@
 const express = require("express");
 const { connectMongo } = require("./connection");
+const cors = require("cors");
 const app = express();
 const port = 8000;
 
@@ -13,6 +14,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 // Middleware
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

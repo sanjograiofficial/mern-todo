@@ -12,6 +12,12 @@ export default function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  // useEffect(async () => {
+  //   const response = await fetch("http://localhost:8000/todo");
+  //   const data = response.json();
+  //   setTodos(data);
+  // }, []);
+
   const addNewTodo = (title) => {
     setTodos((currentTodo) => {
       return [
