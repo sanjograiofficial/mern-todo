@@ -19,9 +19,7 @@ const createTodos = async (req, res) => {
     completed: false,
   });
 
-  return res.render("home", {
-    todos: title,
-  });
+  return res.render("home", {});
 };
 
 module.exports = { getTodos, createTodos };
