@@ -3,13 +3,20 @@ import { useState } from "react";
 export default function Form({ onSubmit }) {
   const [input, setInput] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(input);
-    const response = await fetch("http://localhost:8000/todo", {
-      method: "post",
-    });
     setInput("");
+    fetch("http://localhost:8000/todo", {
+      method: "post",
+      body: JSON.stringify({
+        title: input,
+        completed: false,
+      }),
+    })
+      .then((res) => res.json())
+      .then(() => console.log("Todo created successfully"))
+      .catch(console.error(error));
   };
   return (
     <div>
