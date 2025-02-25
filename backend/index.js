@@ -16,8 +16,13 @@ connectMongo("mongodb://localhost:27017/todo-app").then(() => {
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

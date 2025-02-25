@@ -7,20 +7,30 @@ export default function Form({ onSubmit }) {
     e.preventDefault();
     onSubmit(input);
     setInput("");
-    fetch("http://localhost:8000/todo", {
-      method: "post",
-      body: JSON.stringify({
-        title: input,
-        completed: false,
-      }),
-    })
-      .then((res) => res.json())
-      .then(() => console.log("Todo created successfully"))
-      .catch(console.error(error));
+    async function postData() {
+      fetch("http://localhost:8000", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: input,
+          completed: false,
+        }),
+      })
+        // .then((res) => res.json())
+        .then(() => console.log("Todo created successfully"))
+        .catch(console.error(error));
+    }
+    postData();
   };
   return (
     <div>
-      <form action={"/todo"} method="post" onSubmit={handleSubmit}>
+      <form
+        action={"http://localhost:8000"}
+        method="POST"
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="todo-text" className="item-text">
           Add a new todo:
         </label>
