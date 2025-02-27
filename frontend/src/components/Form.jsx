@@ -18,9 +18,9 @@ export default function Form({ onSubmit }) {
           completed: false,
         }),
       })
-        // .then((res) => res.json())
+        .then((res) => res.json())
         .then(() => console.log("Todo created successfully"))
-        .catch(console.error(error));
+        .catch((error) => console.error(error));
     }
     postData();
   };
