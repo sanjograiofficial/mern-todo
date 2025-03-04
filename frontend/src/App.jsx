@@ -3,28 +3,28 @@ import Form from "./components/Form";
 import TodoList from "./components/TodoList";
 import "./App.css";
 export default function App() {
-  const [todos, setTodos] = useState(() => {
-    const localData = localStorage.getItem("todos");
-    return localData ? JSON.parse(localData) : [];
-  });
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
-
-  useEffect(async () => {
-    const response = await fetch("http://localhost:8000/todo");
-    const data = await response.json();
-    setTodos(data);
+    async function fetchData() {
+      const response = await fetch("http://localhost:8000/todo");
+      const data = await response.json();
+      setTodos(data);
+      console.log(data);
+    }
+    fetchData();
   }, []);
 
   const addNewTodo = (title) => {
-    setTodos((currentTodo) => {
-      return [
-        ...currentTodo,
-        { id: crypto.randomUUID(), title, cpmpleted: false },
-      ];
-    });
+    async function PostTodos() {
+      await fetch("http://localhost:8000/todo", {
+        method: "post",
+        body: {
+          title,
+        },
+      });
+    }
+    setTodos(PostTodos);
   };
   const deleteTodo = (id) => {
     setTodos((currentTodo) => {
